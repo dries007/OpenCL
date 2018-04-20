@@ -1,14 +1,16 @@
 
-__kernel void estimatepi(unsigned int n, __global float * inp, __global unsigned int * result)
+__kernel void estimatepi(unsigned int n, unsigned int group_size, __global float * inpx, __global float * inpy, __global unsigned int * result)
 {
-    int i = get_global_id(0);
+    int group = get_global_id(0);
 
-    if (i >= n) return;
+    if (group >= n) return;
 
-    i *= 2;
-
-    result[i] = (inp[i] * inp[i] + inp[i+1] * inp[i+1]) <= 1.0f ? 1 : 0;
+    int count = 0;
+    for (int i = group_size * group; i < group_size + (group_size * group); i++)
+    {
+        count += ((inpx[i] * inpx[i]) + (inpy[i] * inpy[i])) < 1.0f;
+    }
+    result[group] = count;
 
     return;
 }
-

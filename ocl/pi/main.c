@@ -73,12 +73,12 @@ int main(int argc, char *argv[])
 
     time_measure_start("total");
     time_measure_start("create vectors");
-    cl_float2 * vectors = create_vectors(num_samples);
+//    cl_float2 * vectors = create_vectors(num_samples);
     time_measure_stop_and_print("create vectors");
     time_measure_start("calculation");
     float pi = calc_pi(NULL, num_samples);
     time_measure_stop_and_print("calculation");
-    free(vectors);
+//    free(vectors);
     time_measure_stop_and_print("total");
 
     printf("Calculated PI using %d samples, result is %f\n", num_samples, pi);
