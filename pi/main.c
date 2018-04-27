@@ -1,3 +1,6 @@
+/**
+ * Dries Kennes
+ */
 #include <stdio.h>
 #include <stdbool.h>
 

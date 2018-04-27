@@ -1,3 +1,6 @@
+/**
+ * Dries Kennes
+ */
 
 __kernel void estimatepi(unsigned int n, unsigned int group_size, __global float * inpx, __global float * inpy, __global unsigned int * result)
 {
